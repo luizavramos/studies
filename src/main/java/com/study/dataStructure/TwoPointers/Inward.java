@@ -18,8 +18,5 @@ public class Inward {
         return true;
     }
 
-    public boolean smallerPrefixes(int[] arr) {
-
-    }
 }
 
