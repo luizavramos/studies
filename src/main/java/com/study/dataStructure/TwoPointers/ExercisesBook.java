@@ -3,6 +3,7 @@ package com.study.dataStructure.TwoPointers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ExercisesBook {
     //27.7
@@ -46,15 +47,39 @@ public class ExercisesBook {
         }
         return response;
     }
-    public static void main(String[] args) {
-        List<Integer> arr1 = Arrays.asList(1, 3, 5, 7, 9);
-        List<Integer> arr2 = Arrays.asList(2, 3, 6, 9, 10);
-        List<Integer> arr3 = Arrays.asList(1, 4, 5, 8, 10, 11,12);
 
-        ExercisesBook exercises = new ExercisesBook();
-        List<Integer> resultado = exercises.mergeWithOutDuplicates(arr1, arr2, arr3);
+    //27.09 Reverse Merge Sort
+    public List<Integer> sortValleyShapedArray(List<Integer> arr){
+        int[] response = new int[arr.size()];
 
-        System.out.println("Merge sem duplicatas: " + resultado);
+        int i = arr.size() - 1;
+        int l = 0, r = arr.size() -1;
+
+        while(l < r){
+            if(arr.get(l) >= arr.get(r)){
+                response[i] = arr.get(l);
+                l++;
+                i--;
+            }else{
+                response[i] = arr.get(r);
+                r--;
+                i--;
+            }
+        }
+        response[0] = arr.get(l);
+
+        return Arrays.stream(response).boxed().collect(Collectors.toList());
     }
 
+
+    public static void main(String[] args) {
+        List<Integer> arr1 = Arrays.asList(8, 4, 2, 6);
+        List<Integer> arr2 = Arrays.asList(10, 3, 8, 9, 10);
+        List<Integer> arr3 = Arrays.asList(5, 4, 1, 2,9,10);
+
+        ExercisesBook exercises = new ExercisesBook();
+
+        List<Integer> res =  exercises.sortValleyShapedArray(arr3);
+        System.out.println(res);
+    }
 }
