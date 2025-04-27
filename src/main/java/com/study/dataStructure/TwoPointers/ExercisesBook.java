@@ -71,15 +71,39 @@ public class ExercisesBook {
         return Arrays.stream(response).boxed().collect(Collectors.toList());
     }
 
+    //27.10
+    public List<Integer> missingNumbers(List<Integer> arr, int l, int h){
+        List<Integer> response = new ArrayList<>();
+        if(arr.size() == 0){
+            while(l <= h){
+                response.add(l);
+                l++;
+            }
+            return response;
+        }
+        int i =0;
+
+        while(l <= h){
+            if(arr.get(i) > l){
+                response.add(l);
+                l++;
+            }else if (arr.get(i) == l) {
+                l++;
+                i++;
+            }else{
+                i++;
+            }
+        }
+        return response;
+    }
+
 
     public static void main(String[] args) {
-        List<Integer> arr1 = Arrays.asList(8, 4, 2, 6);
-        List<Integer> arr2 = Arrays.asList(10, 3, 8, 9, 10);
-        List<Integer> arr3 = Arrays.asList(5, 4, 1, 2,9,10);
+        List<Integer> arr1 = Arrays.asList();
 
         ExercisesBook exercises = new ExercisesBook();
 
-        List<Integer> res =  exercises.sortValleyShapedArray(arr3);
+        List<Integer> res =  exercises.missingNumbers(arr1, 9, 13);
         System.out.println(res);
     }
 }
