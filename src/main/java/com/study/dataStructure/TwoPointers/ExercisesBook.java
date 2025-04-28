@@ -97,13 +97,50 @@ public class ExercisesBook {
         return response;
     }
 
+    //27.11
+    public static int[][] intervalIntersection(int[][] arr1, int[][] arr2) {
+        List<int[]> result = new ArrayList<>();
+        int i = 0, j = 0;
+
+        while (i < arr1.length && j < arr2.length) {
+            int start = Math.max(arr1[i][0], arr2[j][0]);
+            int end = Math.min(arr1[i][1], arr2[j][1]);
+
+            if (start < end) {
+                result.add(new int[]{start, end});
+            }
+
+            if (arr1[i][1] < arr2[j][1]) {
+                i++;
+            } else {
+                j++;
+            }
+        }
+
+        return result.toArray(new int[result.size()][]);
+        }
+
+
+
+
+
 
     public static void main(String[] args) {
-        List<Integer> arr1 = Arrays.asList();
+
+        int[][] arr1 = {{0, 2}, {5, 10}, {13, 23}, {24, 25}};
+        int[][] arr2 = {{1, 5}, {8, 12}, {15, 24}, {25, 26}};
+
+        int[][] result = intervalIntersection(arr1, arr2);
+
+        for (int[] interval : result) {
+            System.out.println(Arrays.toString(interval));
+        }
+
+        List<Integer> arr5 = Arrays.asList();
 
         ExercisesBook exercises = new ExercisesBook();
 
-        List<Integer> res =  exercises.missingNumbers(arr1, 9, 13);
+        List<Integer> res =  exercises.missingNumbers(arr5, 9, 13);
         System.out.println(res);
     }
 }
