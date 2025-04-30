@@ -121,7 +121,21 @@ public class ExercisesBook {
         }
 
 
+    //27.12
+    public String[] arrayReversal(String[] arr){
+        int l = 0, r = arr.length - 1;
 
+        while(l < r){
+            String auxiliar = arr[l];
+            arr[l] = arr[r];
+            arr[r] = auxiliar;
+            l++;
+            r--;
+
+            //ps. se usar List tem a função:  Collections.swap();
+        }
+        return arr;
+    }
 
 
 
@@ -142,5 +156,9 @@ public class ExercisesBook {
 
         List<Integer> res =  exercises.missingNumbers(arr5, 9, 13);
         System.out.println(res);
+
+        String[] frutas = {"Maçã", "Banana", "Laranja", "Abacaxi"};
+        String[] reverse = exercises.arrayReversal(frutas);
+        System.out.println(Arrays.toString(reverse));
     }
 }
